@@ -1,0 +1,21 @@
+---
+import Layout from "./Layout.astro";
+export interface Props {
+  title: string;
+  category: string;
+}
+
+const { title, category } = Astro.props;
+---
+
+<Layout title={title}>
+  <main class="mx-auto max-w-7xl py-16 px-6 sm:py-24 lg:px-8 min-h-screen overflow-visible">
+    <article class="grid grid-cols-1 prose">
+      <header>
+        <span class="font-bold uppercase text-lime-300">{category}</span>
+        <h1>{title}</h1>
+      </header>
+      <slot />
+    </article>
+  </main>
+</Layout>

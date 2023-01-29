@@ -1,0 +1,44 @@
+---
+export interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+
+import { Content as FooterContent, components as footerComponents } from '../content/site/footer.mdx';
+
+import FooterLink from '../components/FooterLink.astro';
+---
+
+<!DOCTYPE html>
+<html lang="en" class="bg-lime-500 h-screen overflow-hidden text-gray-100">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+  </head>
+  <body class="font-sans border-[#f6fff5] h-screen overflow-auto relative z-0" style="border-width:12px">
+    <slot />
+    <footer class="bg-lime-400 p-6 site-footer">
+      <FooterContent components={{...footerComponents, a: FooterLink}}/>
+    </footer>
+  </body>
+</html>
+<style is:global>
+  :root {
+    --accent: 124, 58, 237;
+    --accent-gradient: linear-gradient(45deg, rgb(var(--accent)), #da62c4 30%, white 60%);
+  }
+  .site-footer ul {
+    display: flex;
+  }
+  .site-footer li:first-child {
+    margin-right: 0.5rem;
+  }
+  .site-footer li:first-child::after {
+    content: "•";
+    margin-left: 0.5rem;
+  }
+</style>
