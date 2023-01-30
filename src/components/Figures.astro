@@ -2,13 +2,13 @@
 const { figures } = Astro.props;
 ---
 
-<section class="overflow-none col-span-full max-h-screen figures w-full bg-black/10 my-8">
-  <div class="flex flex-nowrap overflow-x-scroll py-6 px-8">
+<section class="overflow-none col-span-full figures w-full bg-black/10 my-8 min-h-screen not-prose">
+  <div class="grid gap-8 grid-flow-col auto-cols-max overflow-x-scroll min-h-full md:pl-[10vw]">
     {
       figures.map((figure, index) => (
-        <figure class={`m-0 p-0 flex-none ${index != figures.length - 1 && "pr-12"}`}>
-          {figure.srcType === "image" && <img src={figure.src} alt={figure.caption} />}
-          <figcaption>{figure.caption}</figcaption>
+        <figure class="max-h-full">
+          {figure.srcType === "image" && <img src={figure.src} alt={figure.caption} class="max-h-[80vh] " />}
+          <figcaption class="prose px-8">{figure.caption}</figcaption>
         </figure>
       ))
     }
