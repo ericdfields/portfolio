@@ -5,13 +5,13 @@ export interface Props {
 
 const { title } = Astro.props;
 
-import { Content as FooterContent, components as footerComponents } from '../content/site/footer.mdx';
+import { Content as FooterContent, components as footerComponents } from "../content/site/footer.mdx";
 
-import FooterLink from '../components/FooterLink.astro';
+import FooterLink from "../components/FooterLink.astro";
 ---
 
 <!DOCTYPE html>
-<html lang="en" class="bg-lime-500 h-screen overflow-hidden text-gray-100">
+<html lang="en" class="bg-lime-500 text-gray-100">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
@@ -19,10 +19,12 @@ import FooterLink from '../components/FooterLink.astro';
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
   </head>
-  <body class="font-sans border-[#f6fff5] h-screen overflow-auto relative z-0" style="border-width:12px">
+  <body class="font-sans border-[#f6fff5] min-h-screen relative z-0 grid grid-cols" style="border-width:12px">
     <slot />
-    <footer class="bg-lime-400 p-6 site-footer">
-      <FooterContent components={{...footerComponents, a: FooterLink}}/>
+    <footer class="bg-lime-400 p-6 lg:px-8 site-footer">
+      <div class="mx-auto max-w-3xl">
+        <FooterContent components={{ ...footerComponents, a: FooterLink }} />
+      </div>
     </footer>
   </body>
 </html>

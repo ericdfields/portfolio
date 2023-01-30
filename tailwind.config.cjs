@@ -1,3 +1,5 @@
+const plugin = require('tailwindcss/plugin')
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
@@ -49,5 +51,15 @@ module.exports = {
   },
   plugins: [
     require('@tailwindcss/typography'),
+    plugin(function ({ addComponents }) {
+      addComponents({
+        'article.prose > *:not(.figures)': {
+          "@apply px-8 mx-auto md:ml-[10vw] md:max-w-3xl lg:max-w-5xl": {}
+        },
+        'article.prose > *:not(.figures) > *': {
+          "max-width": "65ch"
+        }
+      })
+    }),
   ],
 }

@@ -7,20 +7,22 @@ const caseStudies = await getCollection("case-studies");
 ---
 
 <Layout title="Eric Brookfield UI/UX Portfolio">
-  <div class="mx-auto max-w-7xl py-16 px-6 sm:py-24 lg:px-8 min-h-screen">
-    <h1 class="tracking-tight leading-none mb-6 font-extrabold text-6xl flex flex-col"><b class="font-black">Eric Brookfield</b> <span class="text-3xl text-lime-200">UI/UX Portfolio</span></h1>
+  <div class="py-16 px-6 sm:py-24 lg:px-8">
+    <div class="mx-auto max-w-3xl">
+      <h1 class="tracking-tight leading-none mb-6 font-extrabold text-6xl flex flex-col"><b class="font-black">Eric Brookfield</b> <span class="text-3xl text-lime-200">UI/UX Portfolio</span></h1>
 
-    <div class="prose prose-lg text-white leading-snug">
-      <Intro />
-      <ul>
-        {
-          caseStudies.map((entry) => (
-            <li>
-              <a href={`/cs/${entry.slug}`}>{entry.data.title}</a>
-            </li>
-          ))
-        }
-      </ul>
+      <div class="prose prose-lg text-white leading-snug">
+        <Intro />
+        <ul>
+          {
+            caseStudies.map((entry) => (
+              <li>
+                <a href={`/cs/${entry.slug}`}>{entry.data.title}</a>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
     </div>
   </div>
 </Layout>
